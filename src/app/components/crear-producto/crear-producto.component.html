@@ -8,48 +8,96 @@
       </div>
 
       <div class="rounded card mt-2 p-2">
-        <form>
+        <form [formGroup]="productoForm" (ngSubmit)="agregarProducto()">
           <div class="mb-3">
             <input
+              formControlName="nombre"
               type="text"
               class="form-control form-control-lg"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Nombre"
             />
+            <div
+              class="text-danger"
+              *ngIf="
+                productoForm.get('nombre')?.hasError('required') &&
+                productoForm.get('nombre')?.touched
+              "
+            >
+              <span>
+                El nombre del producto <strong>es obligatorio</strong>
+              </span>
+            </div>
           </div>
           <div class="mb-3">
             <input
+              formControlName="categoria"
               type="text"
               class="form-control form-control-lg"
               id="exampleInputPassword1"
               placeholder="Categoria"
             />
+            <div
+              class="text-danger"
+              *ngIf="
+                productoForm.get('categoria')?.hasError('required') &&
+                productoForm.get('categoria')?.touched
+              "
+            >
+              <span>
+                La categoria del producto <strong>es obligatoria</strong>
+              </span>
+            </div>
           </div>
           <div class="mb-3">
             <input
+              formControlName="ubicacion"
               type="text"
               class="form-control form-control-lg"
               id="exampleInputPassword1"
               placeholder="Ubicación"
             />
+            <div
+              class="text-danger"
+              *ngIf="
+                productoForm.get('ubicacion')?.hasError('required') &&
+                productoForm.get('ubicacion')?.touched
+              "
+            >
+              <span>
+                La ubicación del producto <strong>es obligatoria</strong>
+              </span>
+            </div>
           </div>
           <div class="mb-3">
             <input
+              formControlName="precio"
               type="number"
               class="form-control form-control-lg"
               id="exampleInputPassword1"
               placeholder="Precio"
             />
+            <div
+              class="text-danger"
+              *ngIf="
+                productoForm.get('precio')?.hasError('required') &&
+                productoForm.get('precio')?.touched
+              "
+            >
+              <span>
+                El precio del producto <strong>es obligatorio</strong>
+              </span>
+            </div>
           </div>
-          <button
-            type="submit"
-            class="btn btn-lg float-start btn-secondary"
-            routerLink="/"
-          >
+          <button class="btn btn-lg float-start btn-secondary" routerLink="/">
             Volver
           </button>
-          <button type="submit" class="btn btn-lg float-end btn-success">
+          <button
+            type="submit"
+            class="btn btn-lg float-end btn-success"
+            [disabled]="productoForm.invalid"
+          >
             Guardar
           </button>
         </form>

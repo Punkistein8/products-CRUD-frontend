@@ -13,11 +13,16 @@ body {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.titulo{
+/* .titulo{
   font-size: 2rem;
-}
+} */
 
 .fa-solid{
   margin-left: 1rem;
   cursor: pointer;
+}
+
+.text-danger{
+  text-align: start;
+  margin-left: 0.5em;
 }
